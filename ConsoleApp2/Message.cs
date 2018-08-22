@@ -8,27 +8,33 @@ namespace ConsoleApp2
 {
     public class Message
     {
+
+        ITime _time;
+        string MessageToReturn = "no";
+        string UserName;
+
+
+        public Message(ITime time)
+        {
+            this._time = time;
+            this.UserName = Environment.UserName;
+        }
+
         public string GetHelloMessage()
         {
-           
-            DateTime Now = DateTime.Now;
-
-            string MessageToReturn = "no";
-            string UserName = Environment.UserName;
-
-            if( Now.DayOfWeek == DayOfWeek.Saturday
-                || Now.DayOfWeek == DayOfWeek.Sunday
-                || Now.DayOfWeek == DayOfWeek.Friday && Now.Hour > 18
-                || Now.DayOfWeek == DayOfWeek.Monday && Now.Hour < 9
+            if (this._time.TimeNow.DayOfWeek == DayOfWeek.Saturday
+                || this._time.TimeNow.DayOfWeek == DayOfWeek.Sunday
+                || this._time.TimeNow.DayOfWeek == DayOfWeek.Friday && this._time.TimeNow.Hour > 18
+                || this._time.TimeNow.DayOfWeek == DayOfWeek.Monday && this._time.TimeNow.Hour < 9
                 )
             {
                 MessageToReturn = "Bon weekend " + UserName;
             }
-            else if (Now.Hour >= 9 && Now.Hour < 13)
+            else if (this._time.TimeNow.Hour >= 9 && this._time.TimeNow.Hour < 13)
             {
                 MessageToReturn = "Bonjour " + UserName;
             }
-            else if (Now.Hour >= 13 && Now.Hour < 18)
+            else if (this._time.TimeNow.Hour >= 13 && this._time.TimeNow.Hour < 18)
             {
                 MessageToReturn = "Bonne aprem " + UserName;
             }
@@ -36,6 +42,7 @@ namespace ConsoleApp2
             {
                 MessageToReturn = "Bonsoir " + UserName;
             }
+            
             return MessageToReturn;
         }
     }

@@ -11,7 +11,7 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
             Boolean ExitProgram = false;
-            Message greeting = new Message();
+            Message greeting = new Message( new RealTime() );
 
             while ( !ExitProgram )
             {
@@ -21,7 +21,6 @@ namespace ConsoleApp2
                 string userChoice = Console.ReadLine();
                 ExitProgram = (userChoice == "exit");
             }
-
         }
     }
 }
