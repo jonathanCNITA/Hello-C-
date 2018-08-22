@@ -10,6 +10,7 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
+            Boolean ExitProgram = false;
             DateTime Now = DateTime.Now;
 
             string MessageToReturn = "no";
@@ -34,8 +35,15 @@ namespace ConsoleApp2
                 MessageToReturn = "Bonsoir " + UserName;
             }
 
-            Console.WriteLine(Now.Hour);
-            Console.WriteLine(MessageToReturn);
+            while( !ExitProgram )
+            {
+                Console.WriteLine(Now.Hour);
+                Console.WriteLine(MessageToReturn);
+                Console.WriteLine("Write 'exit' to quit the program");
+                string userChoice = Console.ReadLine();
+                ExitProgram = (userChoice == "exit");
+            }
+
         }
     }
 }
